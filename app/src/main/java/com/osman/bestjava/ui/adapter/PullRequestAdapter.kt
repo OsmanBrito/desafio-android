@@ -17,9 +17,11 @@ class PullRequestAdapter(private val context: Context) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(pllRequest: PullRequest) {
-            itemView.repo_tv_name.text = pllRequest.title
-            Glide.with(itemView).load(pllRequest.user.photo).into(itemView.repo_iv_owner_photo)
-            itemView.repo_tv_owner_name.text = pllRequest.user.login
+            itemView.pull_request_tv_title.text = pllRequest.title
+            itemView.pull_request_tv_body.text = pllRequest.body
+            itemView.pull_request_tv_date.text = pllRequest.updateAt
+            Glide.with(itemView).load(pllRequest.user.photo).into(itemView.pull_request_iv_owner_photo)
+            itemView.pull_request_tv_owner_name.text = pllRequest.user.login
             itemView.card_view.setOnClickListener {
 //                val i = Intent(itemView.context, PullRequestActivity::class.java)
 //                i.putExtra("owner", pllRequest.owner.login)

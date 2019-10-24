@@ -3,15 +3,11 @@ package com.osman.bestjava.data.repository
 import android.app.Application
 import android.os.AsyncTask
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.LiveData
-import com.osman.bestjava.RepositoryActivity
 import com.osman.bestjava.api.RetrofitInitializer
 import com.osman.bestjava.data.ProjectDataBase
 import com.osman.bestjava.data.dao.PullRequestDAO
 import com.osman.bestjava.data.entity.PullRequest
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class PullRequestRepository constructor(private val application: Application) {
 

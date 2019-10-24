@@ -10,13 +10,13 @@ import com.osman.bestjava.data.entity.PullRequest
 @Dao
 interface PullRequestDAO {
 
-    @get:Query("SELECT * from repository ORDER BY stargazersCount DESC")
+    @get:Query("SELECT * from pullrequest")
     val pullRequests: LiveData<List<PullRequest>>
 
-    @Query("SELECT * FROM repository ORDER BY stargazersCount DESC")
+    @Query("SELECT * FROM pullrequest")
     fun getAll(): List<PullRequest>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun createAll(repositories: List<PullRequest>)
+    fun createAll(pullRequests: List<PullRequest>)
 
 }

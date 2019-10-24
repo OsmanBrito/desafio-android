@@ -3,7 +3,7 @@ package com.osman.bestjava.data.converter
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import java.security.acl.Owner
+import com.osman.bestjava.data.entity.Owner
 
 
 class OwnerConverter {

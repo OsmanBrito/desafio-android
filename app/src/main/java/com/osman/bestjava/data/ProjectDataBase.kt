@@ -8,11 +8,12 @@ import androidx.room.TypeConverters
 import com.osman.bestjava.data.converter.OwnerConverter
 import com.osman.bestjava.data.dao.PullRequestDAO
 import com.osman.bestjava.data.dao.RepositoryDAO
+import com.osman.bestjava.data.entity.PullRequest
 import com.osman.bestjava.data.entity.Repository
 
 @Database(
-    entities = [Repository::class],
-    version = 1,
+    entities = [Repository::class, PullRequest::class],
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(OwnerConverter::class)

@@ -1,4 +1,4 @@
-package com.osman.bestjava
+package com.osman.bestjava.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,8 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
-import com.osman.bestjava.RepositoryActivity.Companion.progressBar
+import com.osman.bestjava.R
 import com.osman.bestjava.data.entity.Repository
+import com.osman.bestjava.ui.adapter.RepositoryAdapter
 import com.osman.bestjava.viewmodel.RepositoriesViewModel
 import kotlinx.android.synthetic.main.activity_repo_list.*
 import kotlinx.coroutines.Dispatchers

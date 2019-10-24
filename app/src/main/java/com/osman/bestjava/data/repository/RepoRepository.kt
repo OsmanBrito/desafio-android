@@ -5,7 +5,7 @@ import android.os.AsyncTask
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
-import com.osman.bestjava.RepositoryActivity
+import com.osman.bestjava.ui.view.RepositoryActivity
 import com.osman.bestjava.api.RetrofitInitializer
 import com.osman.bestjava.data.ProjectDataBase
 import com.osman.bestjava.data.dao.RepositoryDAO
@@ -38,7 +38,7 @@ class RepoRepository constructor(private val application: Application) {
                 "stars",
                 if (dao.getAll().isNullOrEmpty()) 1 else (dao.getAll().size / 30) + 1
             )
-            if (!response.isSuccessful) {
+            if (response.isSuccessful) {
                 dao.let { createAllAsyncTask(it).execute(response.body()?.items) }
             }
         } catch (e: Exception) {

@@ -19,7 +19,7 @@ data class Repository(
     @Expose
     val name: String,
     @Expose
-    val description: String,
+    val description: String?,
     @SerializedName("stargazers_count")
     val stargazersCount: Int,
     @SerializedName("forks_count")

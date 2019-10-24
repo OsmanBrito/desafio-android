@@ -14,6 +14,6 @@ interface GitHubApi {
     suspend fun repositories(@Query("q") q: String, @Query("sort") sort: String, @Query("page") page: Int): Response<ResponseApi>
 
     @GET("repos/{owner}/{repo}/pulls")
-    suspend fun getPullRequests(@Path("owner") owner: String, @Path("repo") repo: String): Response<List<PullRequest>>
+    suspend fun pullRequests(@Path("owner") owner: String, @Path("repo") repo: String): Response<List<PullRequest>>
 
 }

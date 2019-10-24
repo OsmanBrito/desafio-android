@@ -55,7 +55,7 @@ class RepoRepository constructor(private val application: Application) {
 
         override fun doInBackground(vararg params: List<Repository>): Void? {
             mAsyncTaskDao.createAll(params[0])
-            Log.e(TAG, "Add repositories.")
+            Log.e(TAG, "Add repositories")
             return null
         }
     }

@@ -13,7 +13,7 @@ import com.osman.bestjava.data.entity.Repository
 
 @Database(
     entities = [Repository::class, PullRequest::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 @TypeConverters(OwnerConverter::class)

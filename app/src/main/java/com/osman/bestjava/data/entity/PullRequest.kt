@@ -24,5 +24,5 @@ data class PullRequest(
     @Expose
     val body: String,
     @TypeConverters(OwnerConverter::class)
-    val owner: Owner
+    val user: Owner
 ) : Serializable

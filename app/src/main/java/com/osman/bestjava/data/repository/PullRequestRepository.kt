@@ -12,41 +12,20 @@ import com.osman.bestjava.data.entity.PullRequest
 class PullRequestRepository constructor(private val application: Application) {
 
     private val dao: PullRequestDAO
-    private val allRepositories: LiveData<List<PullRequest>>
+    private val allPullRequest: LiveData<List<PullRequest>>
 
     init {
         val db = ProjectDataBase.getDatabase(application)
         dao = db!!.pullRequestDAO()
-        allRepositories = dao.pullRequests
+        allPullRequest = dao.pullRequests
     }
 
-    suspend fun getPullRequests(owner: String, repo: String): LiveData<List<PullRequest>> {
-        if (dao.getAll().isNullOrEmpty()) {
-            refreshRepositories(owner, repo)
-        }
-        return dao.pullRequests
-    }
-
-    private suspend fun refreshRepositories(owner: String, repo: String) {
-        try {
-            val response = RetrofitInitializer.githubApi.pullRequests(owner, repo)
-            if (!response.isSuccessful) {
-                dao.let { createAllAsyncTask(it).execute() }
-            } else {
-                //TODO:To implement else here
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private class createAllAsyncTask internal constructor(private val mAsyncTaskDao: PullRequestDAO) :
-        AsyncTask<List<PullRequest>, Void, Void>() {
-
-        override fun doInBackground(vararg params: List<PullRequest>): Void? {
-            mAsyncTaskDao.createAll(params[0])
-            Log.e(TAG, "Add pull requests.")
-            return null
+    suspend fun getPullRequests(owner: String, repo: String): List<PullRequest> {
+        val response = RetrofitInitializer.githubApi.pullRequests(owner, repo)
+        return if (response.isSuccessful) {
+            response.body()!!
+        } else {
+            allPullRequest.value!!
         }
     }
 

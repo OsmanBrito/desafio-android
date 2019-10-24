@@ -1,6 +1,8 @@
 package com.osman.bestjava.ui.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,10 +25,9 @@ class PullRequestAdapter(private val context: Context) :
             Glide.with(itemView).load(pllRequest.user.photo).into(itemView.pull_request_iv_owner_photo)
             itemView.pull_request_tv_owner_name.text = pllRequest.user.login
             itemView.card_view.setOnClickListener {
-//                val i = Intent(itemView.context, PullRequestActivity::class.java)
-//                i.putExtra("owner", pllRequest.owner.login)
-//                i.putExtra("repo", pllRequest.name)
-//                itemView.context.startActivity(i)
+                val uri = Uri.parse(pllRequest.url)
+                val i = Intent(Intent.ACTION_VIEW, uri)
+                itemView.context.startActivity(i)
             }
         }
     }

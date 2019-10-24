@@ -7,9 +7,6 @@ import com.google.gson.annotations.SerializedName
 import com.osman.bestjava.data.converter.OwnerConverter
 import java.io.Serializable
 
-//Cada item da lista deve exibir Nome / Foto do autor do PR, Título do PR, Data do PR e Body do PR
-
-
 @Entity(
     tableName = "pullrequest",
     primaryKeys = ["id"]
@@ -17,6 +14,8 @@ import java.io.Serializable
 data class PullRequest(
     @Expose
     val id: Long,
+    @SerializedName("html_url")
+    val url: String,
     @Expose
     val title: String,
     @SerializedName("updated_at")
